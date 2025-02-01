@@ -10,11 +10,10 @@ import 'src/easy_image_viewer_dismissible_dialog.dart';
 import 'src/single_image_provider.dart';
 
 export 'src/easy_image_provider.dart' show EasyImageProvider;
-export 'src/single_image_provider.dart' show SingleImageProvider;
-export 'src/multi_image_provider.dart' show MultiImageProvider;
-
 export 'src/easy_image_view.dart' show EasyImageView;
 export 'src/easy_image_view_pager.dart' show EasyImageViewPager;
+export 'src/multi_image_provider.dart' show MultiImageProvider;
+export 'src/single_image_provider.dart' show SingleImageProvider;
 
 // Defined here so we don't repeat ourselves
 const _defaultBackgroundColor = Colors.black;
@@ -32,11 +31,12 @@ const _defaultCloseButtonTooltip = 'Close';
 /// The [closeButtonTooltip] text is displayed when the user long-presses on the
 /// close button and is used for accessibility.
 /// The [closeButtonColor] defaults to white, but can be set to any other color.
-Future<Dialog?> showImageViewer(
-    BuildContext context, ImageProvider imageProvider,
+Future<Dialog?> showImageViewer(BuildContext context, ImageProvider imageProvider,
     {bool immersive = true,
     void Function()? onViewerDismissed,
     bool useSafeArea = false,
+    bool useRootNavigator = true,
+    RouteSettings? routeSettings,
     bool swipeDismissible = false,
     bool doubleTapZoomable = false,
     Color backgroundColor = _defaultBackgroundColor,
@@ -45,9 +45,10 @@ Future<Dialog?> showImageViewer(
     Color closeButtonColor = _defaultCloseButtonColor}) {
   return showImageViewerPager(context, SingleImageProvider(imageProvider),
       immersive: immersive,
-      onViewerDismissed:
-          onViewerDismissed != null ? (_) => onViewerDismissed() : null,
+      onViewerDismissed: onViewerDismissed != null ? (_) => onViewerDismissed() : null,
       useSafeArea: useSafeArea,
+      useRootNavigator: useRootNavigator,
+      routeSettings: routeSettings,
       swipeDismissible: swipeDismissible,
       doubleTapZoomable: doubleTapZoomable,
       backgroundColor: backgroundColor,
@@ -71,12 +72,13 @@ Future<Dialog?> showImageViewer(
 /// The [closeButtonTooltip] text is displayed when the user long-presses on the
 /// close button and is used for accessibility.
 /// The [closeButtonColor] defaults to white, but can be set to any other color.
-Future<Dialog?> showImageViewerPager(
-    BuildContext context, EasyImageProvider imageProvider,
+Future<Dialog?> showImageViewerPager(BuildContext context, EasyImageProvider imageProvider,
     {bool immersive = true,
     void Function(int)? onPageChanged,
     void Function(int)? onViewerDismissed,
     bool useSafeArea = false,
+    bool useRootNavigator = true,
+    RouteSettings? routeSettings,
     bool swipeDismissible = false,
     bool doubleTapZoomable = false,
     bool infinitelyScrollable = false,
@@ -92,6 +94,8 @@ Future<Dialog?> showImageViewerPager(
   return showDialog<Dialog>(
       context: context,
       useSafeArea: useSafeArea,
+      useRootNavigator: useRootNavigator,
+      routeSettings: routeSettings,
       barrierColor: barrierColor ?? backgroundColor,
       builder: (context) {
         return EasyImageViewerDismissibleDialog(imageProvider,
