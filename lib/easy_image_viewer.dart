@@ -10,8 +10,8 @@ import 'src/easy_image_viewer_dismissible_dialog.dart';
 import 'src/single_image_provider.dart';
 
 export 'src/easy_image_provider.dart' show EasyImageProvider;
-export 'src/multi_image_provider.dart' show MultiImageProvider;
 export 'src/single_image_provider.dart' show SingleImageProvider;
+export 'src/multi_image_provider.dart' show MultiImageProvider;
 
 export 'src/easy_image_view.dart' show EasyImageView;
 export 'src/easy_image_view_pager.dart' show EasyImageViewPager;
