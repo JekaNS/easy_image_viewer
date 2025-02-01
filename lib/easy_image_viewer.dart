@@ -10,10 +10,11 @@ import 'src/easy_image_viewer_dismissible_dialog.dart';
 import 'src/single_image_provider.dart';
 
 export 'src/easy_image_provider.dart' show EasyImageProvider;
-export 'src/easy_image_view.dart' show EasyImageView;
-export 'src/easy_image_view_pager.dart' show EasyImageViewPager;
 export 'src/multi_image_provider.dart' show MultiImageProvider;
 export 'src/single_image_provider.dart' show SingleImageProvider;
+
+export 'src/easy_image_view.dart' show EasyImageView;
+export 'src/easy_image_view_pager.dart' show EasyImageViewPager;
 
 // Defined here so we don't repeat ourselves
 const _defaultBackgroundColor = Colors.black;
@@ -31,7 +32,8 @@ const _defaultCloseButtonTooltip = 'Close';
 /// The [closeButtonTooltip] text is displayed when the user long-presses on the
 /// close button and is used for accessibility.
 /// The [closeButtonColor] defaults to white, but can be set to any other color.
-Future<Dialog?> showImageViewer(BuildContext context, ImageProvider imageProvider,
+Future<Dialog?> showImageViewer(
+    BuildContext context, ImageProvider imageProvider,
     {bool immersive = true,
     void Function()? onViewerDismissed,
     bool useSafeArea = false,
@@ -45,7 +47,8 @@ Future<Dialog?> showImageViewer(BuildContext context, ImageProvider imageProvide
     Color closeButtonColor = _defaultCloseButtonColor}) {
   return showImageViewerPager(context, SingleImageProvider(imageProvider),
       immersive: immersive,
-      onViewerDismissed: onViewerDismissed != null ? (_) => onViewerDismissed() : null,
+      onViewerDismissed:
+          onViewerDismissed != null ? (_) => onViewerDismissed() : null,
       useSafeArea: useSafeArea,
       useRootNavigator: useRootNavigator,
       routeSettings: routeSettings,
@@ -72,7 +75,8 @@ Future<Dialog?> showImageViewer(BuildContext context, ImageProvider imageProvide
 /// The [closeButtonTooltip] text is displayed when the user long-presses on the
 /// close button and is used for accessibility.
 /// The [closeButtonColor] defaults to white, but can be set to any other color.
-Future<Dialog?> showImageViewerPager(BuildContext context, EasyImageProvider imageProvider,
+Future<Dialog?> showImageViewerPager(
+    BuildContext context, EasyImageProvider imageProvider,
     {bool immersive = true,
     void Function(int)? onPageChanged,
     void Function(int)? onViewerDismissed,
