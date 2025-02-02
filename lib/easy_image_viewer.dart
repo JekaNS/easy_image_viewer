@@ -25,6 +25,8 @@ const _defaultCloseButtonTooltip = 'Close';
 /// Setting [immersive] to false will prevent the top and bottom bars from being hidden.
 /// The optional [onViewerDismissed] callback function is called when the dialog is closed.
 /// The optional [useSafeArea] boolean defaults to false and is passed to [showDialog].
+/// The optional [useRootNavigator] boolean defaults to true and is passed to [showDialog].
+/// The optional [routeSettings] defaults to null and is passed to [showDialog].
 /// The optional [swipeDismissible] boolean defaults to false and allows swipe-down-to-dismiss.
 /// The optional [doubleTapZoomable] boolean defaults to false and allows double tap to zoom.
 /// The [backgroundColor] defaults to black, but can be set to any other color.
@@ -67,6 +69,8 @@ Future<Dialog?> showImageViewer(
 /// The optional [onViewerDismissed] callback function is called with the index of
 /// the image that is displayed when the dialog is closed.
 /// The optional [useSafeArea] boolean defaults to false and is passed to [showDialog].
+/// The optional [useRootNavigator] boolean defaults to true and is passed to [showDialog].
+/// The optional [routeSettings] defaults to null and is passed to [showDialog].
 /// The optional [swipeDismissible] boolean defaults to false and allows swipe-down-to-dismiss.
 /// The optional [doubleTapZoomable] boolean defaults to false and allows double tap to zoom.
 /// The optional [infinitelyScrollable] boolean defaults to false and allows infinite scrolling.
